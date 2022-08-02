@@ -261,9 +261,16 @@ function raw(str) {
  */
 function getCoords(el) {
     const rect = el.getBoundingClientRect();
+    const optionsOrPlugin = getOptions(el);
+    const offsetY = typeof optionsOrPlugin !== "function" && optionsOrPlugin.scrollContainer
+        ? optionsOrPlugin.scrollContainer.scrollTop
+        : window.scrollY;
+    const offsetX = typeof optionsOrPlugin !== "function" && optionsOrPlugin.scrollContainer
+        ? optionsOrPlugin.scrollContainer.scrollLeft
+        : window.scrollX;
     return {
-        top: rect.top + window.scrollY,
-        left: rect.left + window.scrollX,
+        top: rect.top + offsetY,
+        left: rect.left + offsetX,
         width: rect.width,
         height: rect.height,
     };

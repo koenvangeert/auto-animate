@@ -26,6 +26,11 @@ export interface AutoAnimateOptions {
      * Default: ease-in-out
      */
     easing: "linear" | "ease-in" | "ease-out" | "ease-in-out" | string;
+    /**
+     * Should be provided when animated elements are wrapped with a custom scroll container.
+     * Elements coordinates will be based on this container scroll offsets.
+     */
+    scrollContainer?: Element;
 }
 /**
  * A custom plugin that determines what the effects to run
